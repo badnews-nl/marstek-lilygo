@@ -1,0 +1,77 @@
+{
+  "name": {
+    "en": "MarstekLilyGo"
+  },
+  "class": "battery",
+  "energy": {
+    "homeBattery": true,
+    "meterPowerImportedCapability": "meter_power.charged",
+    "meterPowerExportedCapability": "meter_power.discharged"
+  },  
+  "capabilities": [
+    "meter_power.charged",
+    "meter_power.discharged",
+    "measure_battery",
+    "measure_power",
+    "charge_mode",
+    "battery_capacity"
+  ],
+  "capabilitiesOptions": {
+    "measure_power.external": {
+      "title": {
+        "en": "External Power",
+        "nl": "Extern Vermogen",
+        "da": "Ekstern Effekt",
+        "de": "Externe Leistung",
+        "es": "Potencia Externa",
+        "fr": "Puissance Externe",
+        "it": "Potenza Esterna",
+        "no": "Ekstern Effekt",
+        "sv": "Extern Effekt",
+        "pl": "Moc Zewnętrzna"
+      }
+    },
+    "meter_power.charged": {
+      "title": {
+        "en": "Energy Charged",
+        "nl": "Energie Geladen",
+        "da": "Energi Opbevaret",
+        "de": "Energie Eingeladen",
+        "es": "Energía Cargada",
+        "fr": "Énergie Chargée",
+        "it": "Energia Caricata",
+        "no": "Energi Ladet",
+        "sv": "Energi Laddad",
+        "pl": "Energia Załadowana"
+      }
+    },
+    "meter_power.discharged": {
+      "title": {
+        "en": "Energy Discharged",
+        "nl": "Energie Ontladen",
+        "da": "Energi Afladet",
+        "de": "Energie Entladen",
+        "es": "Energía Descargada",
+        "fr": "Énergie Déchargée",
+        "it": "Energia Scaricata",
+        "no": "Energi Utladet",
+        "sv": "Energi Urladdad",
+        "pl": "Energia Rozładowana"
+      }
+    }
+  },
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [
+    "lan"
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  },
+  "pair": [{
+    "id": "pair"
+  }]
+}
