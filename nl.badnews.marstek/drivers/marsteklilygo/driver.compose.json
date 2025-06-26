@@ -7,16 +7,39 @@
     "homeBattery": true,
     "meterPowerImportedCapability": "meter_power.charged",
     "meterPowerExportedCapability": "meter_power.discharged"
-  },  
+  },
   "capabilities": [
     "meter_power.charged",
     "meter_power.discharged",
     "measure_battery",
     "measure_power",
     "charge_mode",
+    "measure_temperature.internal",
+    "meter_power.total.charged",
+    "meter_power.total.discharged",
+    "max_charge",
+    "max_discharge",
     "battery_capacity"
   ],
   "capabilitiesOptions": {
+    "measure_temperature.internal": {
+      "title": {
+        "en": "Internal Battery Temperature",
+        "nl": "Interne batterij temperatuur"
+      }
+    },
+    "meter_power.total.charged": {
+      "title": {
+        "en": "Energy Total Charged",
+        "nl": "Energie Totaal Geladen"
+      }
+    },
+    "meter_power.total.discharged": {
+      "title": {
+        "en": "Energy Total Discharged",
+        "nl": "Energie Totaal Ontladen"
+      }
+    },
     "measure_power.external": {
       "title": {
         "en": "External Power",
@@ -67,11 +90,13 @@
     "lan"
   ],
   "images": {
-    "small": "{{driverAssetsPath}}/images/small.png",
-    "large": "{{driverAssetsPath}}/images/large.png",
-    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+    "small": "/drivers/marsteklilygo/assets/images/small.png",
+    "large": "/drivers/marsteklilygo/assets/images/large.png",
+    "xlarge": "/drivers/marsteklilygo/assets/images/xlarge.png"
   },
-  "pair": [{
-    "id": "pair"
-  }]
+  "pair": [
+    {
+      "id": "pair"
+    }
+  ]
 }

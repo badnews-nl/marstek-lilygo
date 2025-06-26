@@ -8,6 +8,8 @@
    version="1.1"
    id="svg14107"
    sodipodi:docname="icon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
@@ -15,7 +17,12 @@
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
-     showgrid="false"/>
+     showgrid="false"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm" />
   <defs
      id="defs14104" />
   <g

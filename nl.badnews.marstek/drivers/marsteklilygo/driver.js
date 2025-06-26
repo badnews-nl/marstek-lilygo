@@ -7,6 +7,11 @@ const capabilities = [
   "meter_power.discharged",
   "measure_battery",
   "measure_power",
+  "measure_temperature.internal",
+  "meter_power.total.charged",
+  "meter_power.total.discharged",
+  "max_charge",
+  "max_discharge",
   "charge_mode",
   "battery_capacity"
 ]
