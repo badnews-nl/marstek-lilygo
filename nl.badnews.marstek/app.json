@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.badnews.marstek",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "platforms": [
@@ -213,7 +213,36 @@
           "id": "pair"
         }
       ],
-      "id": "marsteklilygo"
+      "id": "marsteklilygo",
+      "settings": [
+        {
+          "id": "IPAddress",
+          "type": "text",
+          "label": {
+            "en": "IPAddress"
+          },
+          "value": "0.0.0.0",
+          "hint": {
+            "en": "Marstek Lilygo IP address (or 0.0.0.0 for local/virtual)"
+          }
+        },
+        {
+          "id": "interval",
+          "type": "number",
+          "label": {
+            "en": "Interval"
+          },
+          "value": 15,
+          "min": 1,
+          "max": 300,
+          "units": {
+            "en": "seconds"
+          },
+          "hint": {
+            "en": "Polling interval to read from lilygo in seconds (NEEDS RESTART APP!)"
+          }
+        }
+      ]
     }
   ],
   "capabilities": {
@@ -275,7 +304,7 @@
     "max_charge": {
       "type": "number",
       "title": {
-        "en": "Max Charge"
+        "en": "Max Charging Power in Watt"
       },
       "units": {
         "en": "W"
@@ -292,7 +321,7 @@
     "max_discharge": {
       "type": "number",
       "title": {
-        "en": "Max Discharge"
+        "en": "Max Discharge Power in Watt !800W+ at own risk!"
       },
       "units": {
         "en": "W"

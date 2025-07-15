@@ -1,7 +1,7 @@
 {
   "type": "number",
   "title": {
-    "en": "Max Discharge"
+    "en": "Max Discharge Power in Watt !800W+ at own risk!"
   },
   "units": {
     "en": "W"

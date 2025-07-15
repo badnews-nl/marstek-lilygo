@@ -9,7 +9,7 @@ module.exports = class MyDevice extends Homey.Device {
    * onInit is called when the device is initialized.
    */
   async onInit() {
-    this.log('MyDevice has been initialized');
+    this.log('Marstek device has been initialized');
     //set cards
     const cardmeasurepower = this.homey.flow.getActionCard('setMeasuredPower');
     cardmeasurepower.registerRunListener(async (args) => {
@@ -44,6 +44,9 @@ module.exports = class MyDevice extends Homey.Device {
     global.myCounter = 0
     let pollingInterval = 15
     let settings = this.getSettings();
+    if (typeof settings.interval === 'number') {
+      pollingInterval = settings.interval
+    }
     this.ipaddress = settings.IPAddress
     this.myCounter=0
     this.doPollmodulo10()
@@ -64,7 +67,7 @@ module.exports = class MyDevice extends Homey.Device {
    * onAdded is called when the user adds the device, called just after pairing.
    */
   async onAdded() {
-    this.log('MyDevice has been added');
+    this.log('New Marstek has been added');
   }
 
   /**
@@ -75,8 +78,9 @@ module.exports = class MyDevice extends Homey.Device {
    * @param {string[]} event.changedKeys An array of keys changed since the previous version
    * @returns {Promise<string|void>} return a custom message that will be displayed
    */
-  async onSettings({ oldSettings, newSettings, changedKeys }) {
-    this.log('MyDevice settings where changed');
+  async onSettings(event) {
+    this.log('Marstek settings where changed');
+    this.ipaddress = event.newSettings['IPAddress']
   }
 
   /**
@@ -85,14 +89,14 @@ module.exports = class MyDevice extends Homey.Device {
    * @param {string} name The new name
    */
   async onRenamed(name) {
-    this.log('MyDevice was renamed');
+    this.log('Marstek device was renamed');
   }
 
   /**
    * onDeleted is called when the user deleted the device.
    */
   async onDeleted() {
-    this.log('MyDevice has been deleted');
+    this.log('Marstek device has been deleted');
     await this.stopPolling();
     this.log(`${this.getName()} has been deleted`);
   }
@@ -146,10 +150,12 @@ module.exports = class MyDevice extends Homey.Device {
                                           ['marstek_total_discharging_energy','meter_power.total.discharged','sensor'],
                                           ['marstek_ac_power','measure_power','sensor']])
       this.busy = false;
+
     } catch (error) {
       this.busy = false;
       this.watchDogCounter -= 1;
       this.error('Poll error', error.message);
+      this.setUnavailable("Device is offline");
     }
   }
 
@@ -172,12 +178,19 @@ module.exports = class MyDevice extends Homey.Device {
     let myOptions = {json: true};
     request(myUrl, myOptions, (error, res, body) => {
         if (error) {
+            if (valuePair[0] == 'marstek_ac_power'){
+              this.setUnavailable("Device is offline");
+            }
             return  console.log(error)
         };
     
         if (!error && res.statusCode == 200) {
           let myValue = body.value
-
+          if (valuePair[0] == 'marstek_ac_power'){
+            if (this.getAvailable != 'true') {
+              this.setAvailable("Device is back");
+            }
+          }
 
           if (valuePair[1] == 'measure_power') {
             myValue = myValue * -1;
@@ -198,7 +211,7 @@ module.exports = class MyDevice extends Homey.Device {
           } else if (valuePair[1] == 'max_charge' || valuePair[1] == 'max_discharge' ) {
             myValue = parseFloat(myValue)
           }
-          this.log(valuePair[0]+' with '+valuePair[1]+' got a result of '+myValue)
+          //this.log(valuePair[0]+' with '+valuePair[1]+' got a result of '+myValue)
           
           this.setCapability(valuePair[1], myValue);
           this.set            
@@ -222,6 +235,20 @@ module.exports = class MyDevice extends Homey.Device {
     return Promise.resolve(true);
   }
 
+  async setMaxDischarge(maxdischarge, source) {
+    let myUrl = 'http://'+this.ipaddress+'/number/marstek_max__discharge_power/set?value='+maxdischarge
+    request(myUrl, "", (error, res, body) => {
+      if (error) {
+          return  console.log(error)
+      };
+  
+      if (!error && res.statusCode == 200) {
+        this.log('set Max Discharge to value '+maxdischarge)
+      }
+    });
+    return Promise.resolve(true);
+  }
+
   // register capability listeners
   registerListeners() {
     try {
@@ -232,7 +259,7 @@ module.exports = class MyDevice extends Homey.Device {
       //this.registerCapabilityListener('control_strategy', (strategy) => this.setControlStrategy(strategy, 'app'));
       this.registerCapabilityListener('charge_mode', (chargeMode) => this.setChargeMode(chargeMode, 'app'));
       this.registerCapabilityListener('max_charge', (maxcharge) => this.setMaxCharge(maxcharge, 'app'));
-      this.registerCapabilityListener('max_discharge', (setpoint) => this.setMaxDischarge(setpoint, 'app'));
+      this.registerCapabilityListener('max_discharge', (maxdischarge) => this.setMaxDischarge(maxdischarge, 'app'));
       //this.registerCapabilityListener('battery_temperature', (batteryTemperature) => this.setBatteryTemperature(batteryTemperature, 'app'));
 
       //this.registerCapabilityListener('meter_setpoint', (setpoint) => this.setPowerSetpoint(setpoint, 'app'));
