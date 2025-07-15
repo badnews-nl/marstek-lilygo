@@ -1,0 +1,41 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Charge Mode",
+    "nl": "Laadmodus",
+    "da": "Ladefunktion",
+    "de": "Lademodus",
+    "es": "Modo de carga",
+    "fr": "Mode de charge",
+    "it": "Modalità di carica",
+    "no": "Lademodus",
+    "sv": "Läget för laddning",
+    "pl": "Tryb ładowania",
+    "ru": "Режим зарядки",
+    "ko": "충전 모드"
+  },
+  "values": [
+    {
+      "id": "SELF",
+      "title": {
+        "en": "Self Consumption"
+      }
+    },
+    {
+      "id": "AI",
+      "title": {
+        "en": "AI optimized"
+      }
+    },
+    {
+      "id": "MANUAL",
+      "title": {
+        "en": "Manual"
+      }
+    }
+  ],
+  "value": "SELF",
+  "getable": true,
+  "setable": true,
+  "uiComponent": "picker"
+}

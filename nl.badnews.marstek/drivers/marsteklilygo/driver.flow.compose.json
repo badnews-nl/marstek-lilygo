@@ -1,0 +1,65 @@
+{ 
+    "actions": [
+        {
+            "id" : "setMeasuredPower",
+            "title": {
+              "en": "set power Consumption"
+            },
+            "titleFormatted": {
+                "en": "set power Consumption [[measurepower]]"
+              },
+            "args": [
+              {
+                "type": "number",
+                "name": "measurepower"
+              }
+            ]
+          },
+          {
+            "id" : "setMeterpowerCharged",
+            "title": {
+              "en": "set Energy Charged"
+            },
+            "titleFormatted": {
+                "en": "set Energy Charged [[meterpowercharged]]"
+              },
+            "args": [
+              {
+                "type": "number",
+                "name": "meterpowercharged"
+              }
+            ]
+          },
+          {
+            "id" : "setMeterpowerDischarged",
+            "title": {
+              "en": "set Energy Discharged"
+            },
+            "titleFormatted": {
+                "en": "set Energy Discharged [[meterpowerdischarged]]"
+              },
+            "args": [
+              {
+                "type": "number",
+                "name": "meterpowerdischarged"
+              }
+            ]
+          },
+          {
+            "id" : "setBatteryLevel",
+            "title": {
+              "en": "set Battery level in percentage"
+            },
+            "titleFormatted": {
+                "en": "set Battery level in percentage [[batterylevel]]"
+              },
+            "args": [
+              {
+                "type": "number",
+                "name": "batterylevel"
+              }
+            ]
+          }
+          
+        ]
+}

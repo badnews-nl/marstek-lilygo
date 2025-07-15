@@ -1,0 +1,8 @@
+{
+  "0.1.1": {
+    "en": "added some write actions and added actions for flows"
+  },
+  "0.1.2": {
+    "en": "Fixed descriptions, added unavailable, settings ip and interval changeable"
+  }
+}

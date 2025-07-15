@@ -1,0 +1,19 @@
+[
+    {
+      "id": "IPAddress",
+      "type": "text",
+      "label": { "en": "IPAddress" },
+      "value": "0.0.0.0",
+      "hint": { "en": "Marstek Lilygo IP address (or 0.0.0.0 for local/virtual)" }
+    },
+    {
+        "id": "interval",
+        "type": "number",
+        "label": { "en": "Interval" },
+        "value": 15,
+        "min": 1,
+        "max": 300,
+        "units": { "en": "seconds" },
+        "hint": { "en": "Polling interval to read from lilygo in seconds (NEEDS RESTART APP!)" }
+      }
+  ]

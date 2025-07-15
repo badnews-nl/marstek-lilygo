@@ -1,0 +1,17 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Max Discharge Power in Watt !800W+ at own risk!"
+  },
+  "units": {
+    "en": "W"
+  },
+  "decimals": 4,
+  "getable": true,
+  "setable": true,
+  "insights": true,
+  "uiComponent": "slider",
+  "max": 2500,
+  "min": 0,
+  "step": 50
+}
